@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+   <link rel="stylesheet" href="tailwind.css">
+</head>
+<body>
+
+   <h2>Login to access the website</h2>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <p id="error" class="error-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<style> 
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+</style>
+
+
+<script>
+//users that have access to the site
+const users = [
+    { username: 'safalkafle', password: 'safal123' },
+    { username: 'username', password: 'password' },
+    
+];
+
+function login() {
+    const usernameInput = document.getElementById('username').value;
+    const passwordInput = document.getElementById('password').value;
+    const errorMessage = document.getElementById('error');
+
+
+   //  password check
+    const user = users.find(u => u.username === usernameInput && u.password === passwordInput);
+
+
+    
+    if (user) {
+        location.replace("index.html")
+        alert('Login successful!');
+        errorMessage.textContent = '';
+    } else {
+        // Display error message
+        errorMessage.textContent = 'Invalid username or password';
+    }
+}
+</script>
