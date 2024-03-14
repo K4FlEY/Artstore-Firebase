@@ -27,7 +27,7 @@
     <div  class="flex-col text-center" id="label">    
     </div> 
 
-    <div class="" id="shopping-cart">
+    <div class="items_data" id="shopping-cart">
        
     </div>
     <style>
@@ -73,7 +73,7 @@ body {
 
     .main-content {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         text-align: center;
         padding: 50px 20px;
@@ -100,10 +100,15 @@ body {
 
 #shopping-cart {
     padding: 20px;
-    background-color: #a07b7b; 
+    background-color: #d3c4c4; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    display: flex;
+   
+}
+
+.items_data{
+padding: 20px;
+background: rebeccapurple;
 }
 
 /* Style for the cart icon */
@@ -118,6 +123,8 @@ body {
     align-items: center;
     border-bottom: 1px solid #ddd;
     padding: 10px;
+    margin: 10px;
+    display: flex;
 }
 
 .cart-item img {
@@ -129,6 +136,7 @@ body {
 .cart-item-info {
     flex-grow: 1;
     margin-left: 10px;
+    display: flex;
 }
 
 .cart-item-info h3 {
