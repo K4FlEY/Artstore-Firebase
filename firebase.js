@@ -21,26 +21,33 @@
   const analytics = getAnalytics(app);
   const auth = getAuth();
 
+
+let loginname = document.getElementById("loginname");
 let loginemail = document.getElementById("loginemail");
 let loginpassword = document.getElementById("loginpassword");
 
 let signupemail = document.getElementById("signupemail");
 let signuppassword = document.getElementById("signuppassword");
+let signupname = document.getElementById("signupname");
+
+let userDisplay = document.getElementById("userDisplay");
+
 
 window.signup = function(e){
   e.preventDefault();
   var obj = {
+    name: signupname.value,
     email: signupemail.value,
     password: signuppassword.value,
 
 
   };
-  createUserWithEmailAndPassword(auth, obj.email, obj.password)
+  createUserWithEmailAndPassword(auth,obj.name, obj.email, obj.password)
   .then(function(success){
     alert("You have Created successfuly account");
   }) 
   .catch(function(err){
-    alert("Error:" + err.message)
+    alert(err.message)
   })
 
   
@@ -50,23 +57,35 @@ window.signup = function(e){
 window.login = function(e){
   e.preventDefault();
   var obj = {
+    name: loginname.value,
     email: loginemail.value,
     password: loginpassword.value,
-
-
   };
+
+  let userName = obj.name;
   signInWithEmailAndPassword(auth, obj.email, obj.password)
   .then(function(success){
-    alert("You are logggggeedddd inininin ululu")
-    window.location.replace("index.html")
+   
+    alert(`Welcome, ${userName}!`);
+  //   lsUserName= localStorage.getItem("userName")
+    
+  localStorage.setItem("userName", userName);
+    window.location.replace("index.html");
+    
+
   }) 
+
+
+
   .catch(function(err){
-    alert("Login Error")
+    alert("Wrong Email or Password.")
   });
 
+
   
+
+
+
+
 }
 
-
-
-  

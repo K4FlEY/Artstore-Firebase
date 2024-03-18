@@ -1,4 +1,4 @@
-// Selecting elements from the DOM
+
 let label = document.getElementById("label");
 let shoppingCart = document.getElementById("shopping-cart");
 let basket = JSON.parse(localStorage.getItem("data")) || [];
@@ -14,27 +14,25 @@ cartCalculation();
 let generateCartItems = () => {
   if (basket.length !== 0) {
     return (shoppingCart.innerHTML = basket.map((x) => {
-      let {id, items} = x;
-      let search = shopItemsData.find((y) => y.id === id) || [];
-      let {img, name, price} = search;
-      return`
-      <div class="flex items-center justify-between border-b-2 border-black p-4 id="items">
-      <div class="flex items-center space-x-4" id="items-class">
-      <img width=70" src = ${img} alt = "pht">
-        <p>${name}</p>
-        <p class="text-black pl-20">${price}</p>
-      </div>
-    
-      <div class="flex items-between space-x-4">
-         <i onclick="decrement(${id})" class="bi bi-dash cursor-pointer"></i>
-        <div id=${id} class="bg-gray-200 px-2 py-1 rounded">${items}</div>
-        <i onclick="increment(${id})" class="bi bi-plus cursor-pointer"></i>
-      </div>
-    
-      <i onclick="removeItem(${id})" class="bi bi-x-lg cursor-pointer"></i>
-    </div> `;
-    }).join(""));
+      let { id, items } = x;
+      let search = shopItemsData.find((y) => y.id === id) || {};
+      let { img, name, price } = search;
+      return `
 
+        <img width="70" src="${img}" alt="Product Photo">
+        <p class="name">${name}</p>
+        <p class="price">${price}</p>
+      </div>
+      <div class="cart-item-controls">
+        <i onclick="decrement(${id})" class="minus-button cursor-pointer">-</i>
+        <div id=${id} class="item-count">${items}</div>
+        <i onclick="increment(${id})" class="plus-button cursor-pointer">+</i>
+      </div>
+    
+      <i onclick="removeItem(${id})" class="remove-button cursor-pointer">X</i>
+    </div>
+    `;
+    }).join(""));
   } else if (basket.length == 0) {
     shoppingCart.innerHTML = ``;
 
@@ -44,6 +42,7 @@ let generateCartItems = () => {
         <a href="arts.html"><button class="bg-black text-white rounded-xl p-2">Buy Items</button></a>`;
   }
 };
+
 generateCartItems();
 
 // Function to increment the quantity of an item in the cart

@@ -1,175 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your cart</title>
-    <link rel="stylesheet" href="tailwind.css">
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutus.html">About us</a></li> 
-            <li><a href="arts.html">Arts</a></li>
-            <li><a href="contactus.html">Contact us</a></li>
-            <li><a href="loginsite.html">Login</a></li>
-            <a href="cart.html"><i class="bi bi-cart" id="cart"></i></a>
-        </ul>
+    <header>
+        <div id=""></div>
+        <div id="users">
+          
+            <a href="loginsite.html">Join us</a>
+            <a href="loginsite.html">Login</a>
+        </div>
+        <nav class="navbar">
+            <a href="index.html"><img src="pht/Artstore (2).png" alt="Logo"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li> 
+                <li><a href="arts.html">Arts</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li> <a href="cart.html"> <i class="bi bi-cart" id="cart">0</i></a></li> 
+                
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </div>
+            <div class="love-mark">
+                <i class="bi bi-heart"></i>
+            </div>
+        </nav>
+    </header>
+  
+    <div class="main-content">
+        <div class="items_data" id="shopping-cart"></div>
+        <div class="cart" id="label"></div>
     </div>
+ 
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="faq.html">Frequently Asked Questions (FAQ)</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <div class="contact-info">
+                <p>Address: </p>
+                <p>Email: example@example.com</p>
+                <p>Phone: +123456789</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
 
-
-    
-    <div  class="flex-col text-center" id="label">    
-    </div> 
-
-    <div class="items_data" id="shopping-cart">
-       
-    </div>
-    <style>
-
-body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-    }
-
-    .navbar {
-        background-color: #3498db;
-        padding: 10px 0;
-        position: sticky;
-        top: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .navbar li {
-        margin: 0;
-        padding: 0;
-    }
-
-    .navbar a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        transition: color 0.3s ease;
-    }
-
-    .navbar a:hover {
-        color: #ccc;
-    }
-
-    .main-content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        text-align: center;
-        padding: 50px 20px;
-    }
-
-    .main-content h1 {
-        font-family: 'monospace';
-        font-size: 2.5rem;
-        color: #3498db;
-        margin-bottom: 15px;
-    }
-
-    .main-content p {
-        font-size: 1.2rem;
-        color: #333;
-    }
+<script src="cart.js"></script>
+<script src="main.js"></script>
+<script src="items_data.js"></script>
+<script src="firebase.js" type="module"></script>
 
 
 
 
-#label {
-    margin: 20px 0;
+<style>
+
+.bi bi-cart {
+    background-color: #c1adad;
+} 
+.shopping-cart {
+    display: grid;
+    grid-template-columns: 1fr; /* Each item takes up one fraction of the available space */
+    gap: 10px; /* Adjust the gap between items as needed */
 }
 
-#shopping-cart {
-    padding: 20px;
-    background-color: #d3c4c4; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-   
-}
-
-.items_data{
-padding: 20px;
-background: rebeccapurple;
-}
-
-/* Style for the cart icon */
-.bi-cart {
-    cursor: pointer;
-}
-
-/* Style for the cart item */
-.cart-item {
+.shopping-cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #453535;
     padding: 10px;
-    margin: 10px;
-    display: flex;
 }
 
-.cart-item img {
-    width: 50px; 
-    height: auto;
-    border-radius: 4px;
-}
-
-.cart-item-info {
-    flex-grow: 1;
-    margin-left: 10px;
-    display: flex;
-}
-
-.cart-item-info h3 {
-    margin: 0;
-}
-
-.cart-item-info p {
-    margin: 5px 0;
-}
-
-.cart-item-actions {
+.shopping-cart-info {
     display: flex;
     align-items: center;
 }
 
-.cart-item-actions button {
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
+.shopping-cart-info img {
+    margin-right: 10px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+}
+
+.minus-button,
+.plus-button,
+.remove-button {
+    font-size: 1.5rem;
+    margin: 0 5px;
+}
+
+.item-count {
+    background-color: #ccc;
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#users {
+    text-align: end;
+}
+
+#users a {
+    color: rgb(97, 162, 188);
+    font-weight: 800;
+    margin: 0px 20px;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+#users a:hover {
+    padding-top: 50px;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar img {
+    width: 20%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links li a {
+    color: black;
+    font-weight: 800;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: rgb(87, 161, 190);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: none;
+    padding: 5px;
+}
+
+.search-bar button {
+    border: none;
+    background: none;
     cursor: pointer;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.footer-content {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
     margin-left: 10px;
 }
 
-#items {
-   
-    padding-left: 10px;
+/* Add your additional CSS rules here */
+
+#shopping-cart {
+    display: flex;
+    padding: 20px;
+    color: brown;
+    border: 1px solid black;
 }
 
-    </style>
+.cart-item {
+    height: 300px;
+    width: 700px;
+    background: #cba5a5;
+}
 
-    <script src="items_data.js"></script>
-    <script src="cart.js"></script>
+.cart-item-info img {
+    margin-right: 10px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+}
+
+.minus-button,
+.plus-button,
+.remove-button {
+    font-size: 1.5rem;
+    margin: 0 5px;
+}
+
+.item-count {
+    background-color: #4e3636;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+</style>
+
+
 
 </body>
+<script src="cart.js"></script>
+<script src="main.js"></script>
+<script src="items_data.js"></script>
 
 </html>
+

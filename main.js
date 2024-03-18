@@ -8,22 +8,22 @@ let generateShop = () => {
     let {id, name, price, desc, img} = x;
     let search = basket.find((x) => x.id === id) || [];
     return`
-        <div class="relative group" id=product-id-${id}>
-            <img src=${img} class="w-full h-auto rounded-md flex justify-center" id="products">
-            <div class="absolute inset-0 flex items-center text-center  justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out bg-black bg-opacity-50 rounded-md">
-                <div class="text-white">
-                    <h3>${name}</h3>
-                    <p>${price}</p>
-                    <p>${desc}</p>
-                    <div class="flex justify-center text-2xl p-2">
-                      <i onclick="decrement(${id})" class="bi bi-dash"></i>
-                      <div id=${id} class="quantity">${search.items === undefined ? "0" : search.items}</div>
-                      <i onclick="increment(${id})" class="bi bi-plus"></i>
-                    </div>
-                    <a href="cart.html"><button class="bg-pink-200 hover:bg-pink-500 text-black rounded-md px-3 py-1">Buy</button></a>
-                </div> 
+    <div class="product" id=product-id-${id}>
+    <img src=${img} class="product-img"id="products">
+    <div class="product-div">
+        <div class="product-details">
+            <h3>${name}</h3>
+            <p>${price}</p>
+            <p>${desc}</p>
+            <div class="calc">
+              <i onclick="decrement(${id})" class="bi bi-dash"></i>
+              <div id=${id} class="quantity">${search.items === undefined ? "0" : search.items}</div>
+              <i onclick="increment(${id})" class="bi bi-plus"></i>
             </div>
-        </div>
+            <a href="cart.html"><button class="bg-pink-200 hover:bg-pink-500 text-black rounded-md px-3 py-1">Buy</button></a>
+        </div> 
+    </div>
+</div>
     `;
   }).join(""));
 };

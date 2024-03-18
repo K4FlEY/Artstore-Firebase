@@ -12,7 +12,9 @@
         <div id="users">
             <a href="loginsite.html">Join us</a>
             <a href="loginsite.html">Login</a>
+            <p id="userDisplay">&copy;Safal Kafle</p>
         </div>
+        
         <nav class="navbar">
             <a href="index.html"><img src="pht/Artstore (2).png" alt="Logo"></a>
             <ul class="nav-links">
@@ -20,7 +22,7 @@
                 <li><a href="aboutus.html">About Us</a></li> 
                 <li><a href="arts.html">Arts</a></li>
                 <li><a href="contactus.html">Contact Us</a></li>
-           
+             <li> <a href="cart.html"> <i class="bi bi-cart" id="cart">0</i></a></li> 
             <div class="search-bar">
                 <input type="text" placeholder="Search">
                 <button type="submit"><i class="bi bi-search"></i></button>
@@ -55,9 +57,12 @@
             </div>
         </div>
     </footer>
+
+    
     <script src="items_data.js"></script>
     <script src="main.js"></script>
     <script src="cart.js"></script>
+    <script src="firebase.js" type="module"></script>
 </body>
 </html>
 
@@ -65,31 +70,73 @@
 
 
 <style>
-/* #users{
- text-align: end;
+
+
+/* Style for each product */
+.product {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+    width: 40%; /* Adjust the width as needed */
+    margin: 30px; /* Adjust the margin as needed */
+    
+    position: relative;
+}
+
+/* Style for product image */
+.product-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+}
+
+/* Hover effect */
+.product:hover .product-img {
+    transform: scale(1.1);
+}
+
+/* Style for product details */
+.product-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0 0 8px 8px;
+}
+
+/* Style for quantity adjustment */
+.calc {
+    display: flex;
+    align-items: center;
+}
+
+.calc i {
+    cursor: pointer;
+}
+
+/* Style for Buy button */
+.calc button {
+    margin-top: 5px;
+}
+
+/* Clearfix for floating elements */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 
-#users a{
-text-decoration: none;
-color: black;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-weight: 800;
-padding: 8px;
-}
 
-.navbar {
-display: flex;
-width: 400px;
-}
-.navbar img{
-display: flex;
-height: 200px;
-width: 400px;
-text-decoration: none;
-}
 
- */
+
+
+
+
 
 
  body {
@@ -108,13 +155,25 @@ header {
 
 #users {
     text-align: end;
+    text-decoration: none;
+    
 }
 
-#users a {
+#users a{
     text-decoration: none;
-    color: #000;
+    
+    color: rgb(97, 162, 188);
     font-weight: 800;
-    padding: 8px;
+    margin: 0px 20px;
+    transition: color 0.3s;
+}
+
+#users a:hover{
+    padding-top: 50px;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+
 }
 
 .navbar {
@@ -125,7 +184,7 @@ header {
 }
 
 .navbar img {
- width: 100%;
+ width: 30%;
    
 }
 
@@ -139,11 +198,15 @@ header {
     text-decoration: none;
     list-style: none;
 }
-.nav-links li a{
-   
-  color: black;
-  font-weight: 800;
+.nav-links li a {
+    color: black;
+    font-weight: 800;
     text-decoration: none;
+    transition: color 0.3s; /* Adding a smooth transition effect */
+}
+
+.nav-links li a:hover {
+    color: rgb(87, 161, 190); /* Changing the color to blue on hover */
 }
 
 .search-bar {
